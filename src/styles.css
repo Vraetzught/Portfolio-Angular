@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+:root{
+  --primary: rgb(15, 35, 50);
+  --secondary: rgb(220, 220, 220);
+  --accent: rgb(185, 135, 10);
+  --dark-background: rgb(15, 20, 30);
+  --font-primary: 'Ubuntu Mono', sans-serif;
+}
+
+@keyframes gentle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+.darkTheme {
+  color: var(--secondary);
+  background-color: var(--dark-background);
+}
+
+.lightTheme {
+  color: var(--primary);
+  background-color: var(--secondary);
+}
+
+.bouncy-icon:hover {
+  animation: gentle-bounce 0.5s infinite;
+}
