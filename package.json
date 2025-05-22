@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "@ng-icons/core": "^31.4.0",
+    "@ng-icons/devicon": "^31.4.0",
     "@ng-icons/font-awesome": "^31.4.0",
     "@ng-icons/material-icons": "^31.4.0",
     "@tailwindcss/postcss": "^4.1.6",

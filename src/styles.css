@@ -1,30 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
-:root{
+:root {
   --primary: rgb(15, 35, 50);
+  --primary-dark: rgb(from var(--primary) calc(0.8 * r) calc(0.8 * g) calc(0.8 * b));
+  --primary-light: rgb(from var(--primary) calc(1.2 * r) calc(1.2 * g) calc(1.2 * b));
   --secondary: rgb(220, 220, 220);
+  --secondary-dark: rgb(from var(--secondary) calc(0.9 * r) calc(0.9 * g) calc(0.9 * b));
+  --secondary-light: rgb(from var(--secondary) calc(1.1 * r) calc(1.1 * g) calc(1.1 * b));
   --accent: rgb(185, 135, 10);
-  --dark-background: rgb(15, 20, 30);
+  --accent-dark: rgb(from var(--accent) calc(0.9 * r) calc(0.9 * g) calc(0.9 * b));
+  --accent-light: rgb(from var(--accent) calc(1.1 * r) calc(1.1 * g) calc(1.1 * b));
   --font-primary: 'Ubuntu Mono', sans-serif;
 }
 
-@keyframes gentle-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
 
 body {
   font-family: var(--font-primary);
 }
 
+.icon-card {
+  padding: 1em;
+  border-radius: 1em;
+  transition: transform 150ms ease-in-out 75ms;
+}
+
+.icon-card:hover {
+  transform: translateY(-0.25rem) scale(1.1);
+}
+
 .darkTheme {
   color: var(--secondary);
-  background-color: var(--dark-background);
+  background-color: var(--primary-dark);
+}
+
+.darkTheme button {
+  color: var(--accent-dark);
+  border: 2px solid var(--accent-dark);
+  background-color: var(--secondary);
+}
+
+.darkTheme button:hover {
+  border: 2px solid var(--accent-light);
+  color: var(--accent);
+
+}
+
+.darkTheme h1, .darkTheme h2 {
+  text-shadow: var(--accent) 0 3px 10px;
+}
+
+
+.darkTheme .icon-card {
+  background-color: var(--secondary-dark);
+  color: var(--primary);
+  box-shadow: 0 0 30px var(--accent-dark);
+}
+
+.darkTheme .nav-menu {
+  box-shadow: var(--accent) -5px 5px 10px;
 }
 
 .lightTheme {
@@ -32,6 +66,28 @@ body {
   background-color: var(--secondary);
 }
 
-.bouncy-icon:hover {
-  animation: gentle-bounce 0.5s infinite;
+.lightTheme button {
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  background-color: var(--primary);
 }
+
+.lightTheme button:hover {
+  border: 2px solid var(--accent-light);
+  color: var(--accent-light);
+}
+
+.lightTheme h1, .lightTheme h2 {
+  text-shadow: var(--primary-light) 0 3px 10px;
+}
+
+.lightTheme .icon-card {
+  background-color: var(--primary);
+  color: var(--secondary);
+  box-shadow: 0 0 30px var(--primary-dark);
+}
+
+.lightTheme .nav-menu {
+  box-shadow: var(--primary-light) -5px 5px 10px;
+}
+

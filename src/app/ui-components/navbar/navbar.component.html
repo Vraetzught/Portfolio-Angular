@@ -1,12 +1,35 @@
-<div class="w-full h-16 px-10 flex flex-row justify-between items-center shadow-lg shadow-amber-500/50 bg-(--primary) gap-5 text-(--secondary)">
-  <div class="flex flex-row gap-5 items-center">
-    <img ngSrc="/assets/Logo_doorzichtig.png" alt="NB Portfolio logo" width="55" height="55" priority>
-    <h1>This is the navbar</h1>
+<div
+  class="w-full h-16 px-10 flex flex-row justify-between items-center shadow-lg shadow-amber-500/50 bg-(--primary) gap-5 text-(--secondary) sticky border-b-2 border-(--accent)">
+  <div class="flex h-full items-center cursor-pointer">
+    <img ngSrc="/assets/Logo_doorzichtig.png" alt="NB Portfolio logo" width="655" height="602" priority
+         [routerLink]="'/'" class="max-h-14 max-w-14">
   </div>
-  <div class="flex h-full text-2xl items-center hover:cursor-pointer" (click)="toggleDarkMode()">
-    <ng-icon name="matLightModeOutline" *ngIf="isDarkMode; else darkModeIcon"></ng-icon>
-    <ng-template #darkModeIcon>
-      <ng-icon name="matDarkModeOutline"></ng-icon>
-    </ng-template>
+  <div class="hidden md:flex md:flex-row sm:gap-10 lg:gap-20 md:items-center md:justify-center md:font-bold">
+    <div *ngFor="let link of links">
+      <a [routerLink]="link.path">
+        {{ link.title }}
+      </a>
+    </div>
+  </div>
+  <div class="flex flex-row gap-5 items-center">
+    <div class="flex h-full text-2xl items-center cursor-pointer" (click)="toggleDarkMode()">
+      <ng-icon name="matLightModeOutline" *ngIf="isDarkMode; else darkModeIcon"></ng-icon>
+      <ng-template #darkModeIcon>
+        <ng-icon name="matDarkModeOutline"></ng-icon>
+      </ng-template>
+    </div>
+    <div class="flex h-full text-2xl items-center cursor-pointer md:hidden" (click)="toggleMenu()" data-menu-toggle>
+      <ng-icon name="faSolidBars"></ng-icon>
+    </div>
+  </div>
+</div>
+<div *ngIf="isMenuOpen"
+     class="md:hidden absolute top-15 right-0 w-30 bg-(--primary-light) nav-menu">
+  <div class="flex flex-col py-4 px-5 gap-5">
+    <div *ngFor="let link of links">
+      <a [routerLink]="link.path" class="font-bold text-(--secondary) flex w-full" (click)="isMenuOpen = false">
+        {{ link.title }}
+      </a>
+    </div>
   </div>
 </div>
