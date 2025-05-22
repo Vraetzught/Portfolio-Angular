@@ -1,20 +1,26 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core'
-import { RouterOutlet } from '@angular/router';
-import { FooterComponent, NavbarComponent } from './ui-components'
-import {NgClass} from '@angular/common'
+import { Component } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { FooterComponent, NavbarComponent } from './ui-components';
+import { NgClass } from '@angular/common';
+import { routeTransition } from './route-transitions';
 
-@Component({
+@Component( {
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, NgClass],
+  imports: [ RouterOutlet, NavbarComponent, FooterComponent, NgClass ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
-})
+  styleUrl: './app.component.css',
+  animations: [ routeTransition ],
+} )
+
 export class AppComponent {
   title = 'NB Portfolio';
 
-  isDarkMode: boolean = true
-  toggleDarkMode(event: boolean) {
-    this.isDarkMode = event
+  isDarkMode: boolean = false;
+
+  toggleDarkMode ( event: boolean ) {
+    this.isDarkMode = event;
   }
 
+  constructor (protected route: ActivatedRoute) {
+  }
 }
