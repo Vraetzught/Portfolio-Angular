@@ -1,39 +1,42 @@
-
-  <div class="flex flex-col lg:flex-row gap-5 lg:gap-20 w-full py-5">
-    <img ngSrc="assets/KlaasBrems2.jpg" alt="Profielfoto" width="412" height="483"
-         class="rounded-2xl ring-2 ring-(--accent) max-h-40 max-w-36 lg:max-h-80 lg:max-w-72" priority>
-    <div class="flex flex-col gap-5 items-start justify-between">
+<div class="flex flex-col lg:flex-row gap-5 lg:gap-20 w-full py-5">
+   <img ngSrc="assets/KlaasBrems2.jpg" alt="Profielfoto" width="412" height="483"
+        class="rounded-2xl ring-2 ring-(--accent) max-h-40 max-w-36 lg:max-h-80 lg:max-w-72" priority>
+   <div class="flex flex-col gap-5 items-start justify-between">
       <h1 class="text-4xl font-bold">Who am I?</h1>
       <p class="text-lg">
-        Welkom op mijn portfolio website.
-        <br>
-        Mijn reis in de wereld van programmeren begon in 2022, toen ik SQL ontdekte en merkte hoe boeiend dat was.
-        Dit leidde tot mijn interesse in web en software development en begon ik met het verkennen van HTML, CSS en
-        JavaScript via webcursussen van de VDAB.
-        Uiteindelijk was ik zo gepassioneerd over dit vakgebied dat ik mijn carrière vaarwel heb gezegd en me heb
-        omgeschoold tot programmeur aan Thomas More in Geel,
-        met deze website als resultaat! Als je meer over mij wilt weten, nodig ik je uit om mijn
-        <span class="font-semibold text-(--accent) cursor-pointer hover:text-(--accent-light)" [routerLink]="'/hobbies'">Hobbies-</span>
-         en <span class="font-semibold text-(--accent) cursor-pointer hover:text-(--accent-light)" [routerLink]="'/ervaring'">Ervaring-</span>pagina te
-        bezoeken.
+         Welkom op mijn portfolio website.
+         <br>
+         Mijn reis in de wereld van programmeren begon in 2022, toen ik SQL ontdekte en merkte hoe boeiend dat was.
+         Dit leidde tot mijn interesse in web en software development en begon ik met het verkennen van HTML, CSS en
+         JavaScript via webcursussen van de VDAB.
+         Uiteindelijk was ik zo gepassioneerd over dit vakgebied dat ik mijn carrière vaarwel heb gezegd en me heb
+         omgeschoold tot programmeur aan Thomas More in Geel,
+         met deze website als resultaat! Als je meer over mij wilt weten, nodig ik je uit om mijn
+         <span class="font-semibold text-(--accent) cursor-pointer hover:text-(--accent-light)"
+               [routerLink]="'/hobbies'">Hobbies-</span>
+         en <span class="font-semibold text-(--accent) cursor-pointer hover:text-(--accent-light)"
+                  [routerLink]="'/ervaring'">Ervaring-</span>pagina te
+         bezoeken.
       </p>
-      <button class="mt-5 flex flex-row justify-between items-center gap-2 cursor-pointer px-4 py-2 rounded-3xl" (click)="router.navigate(['/contact'])">
-        <ng-icon name="faSolidPhone"></ng-icon>
-        <span class="text-lg font-bold">Contact</span>
+      <button class="mt-5 flex flex-row justify-between items-center gap-2 cursor-pointer px-4 py-2 rounded-full"
+              (click)="router.navigate(['/contact'])">
+         <ng-icon name="faSolidPhone"></ng-icon>
+         <span class="text-lg font-bold">Contact</span>
       </button>
 
-    </div>
-  </div>
-  <div class="flex flex-col w-full justify-between gap-5 lg:gap-20 py-5">
-    <h2 class="text-4xl font-bold self-end">My skills</h2>
-    <div class="flex flex-wrap justify-center gap-5 lg:gap-10">
-      <div *ngFor="let skill of skills" class="flex flex-col items-center justify-between w-44 h-50 icon-card cursor-pointer">
-        <ng-icon [name]="skill.icon" class="text-8xl"></ng-icon>
-        <h3 class="text-2xl font-bold">{{ skill.name }}</h3>
+   </div>
+</div>
+<div class="flex flex-col w-full justify-between gap-5 lg:gap-20 py-5">
+   <h2 class="text-4xl font-bold self-end">My skills</h2>
+   <div class="flex flex-wrap justify-center gap-5 lg:gap-10">
+      <div *ngFor="let skill of skills"
+           class="flex flex-col items-center justify-between w-44 h-50 icon-card cursor-pointer">
+         <ng-icon [name]="skill.icon" class="text-8xl"></ng-icon>
+         <h3 class="text-2xl font-bold">{{ skill.name }}</h3>
       </div>
 
-    </div>
-  </div>
+   </div>
+</div>
 
 
 

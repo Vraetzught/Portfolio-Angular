@@ -22,7 +22,7 @@ export class NavbarComponent {
    router = inject( Router );
    elementRef = inject( ElementRef );
 
-   isDarkMode: boolean = false;
+   isDarkMode: boolean = true;
    isMenuOpen: boolean = false;
 
    @Output() themeChangedEvent = new EventEmitter<boolean>;

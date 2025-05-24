@@ -5,22 +5,22 @@ import { NgClass } from '@angular/common';
 import { routeTransition } from './route-transitions';
 
 @Component( {
-  selector: 'app-root',
-  imports: [ RouterOutlet, NavbarComponent, FooterComponent, NgClass ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  animations: [ routeTransition ],
+   selector: 'app-root',
+   imports: [ RouterOutlet, NavbarComponent, FooterComponent, NgClass ],
+   templateUrl: './app.component.html',
+   styleUrl: './app.component.css',
+   animations: [ routeTransition ],
 } )
 
 export class AppComponent {
-  title = 'NB Portfolio';
+   title = 'NB Portfolio';
 
-  isDarkMode: boolean = false;
+   isDarkMode: boolean = true;
 
-  toggleDarkMode ( event: boolean ) {
-    this.isDarkMode = event;
-  }
+   toggleDarkMode ( event: boolean ) {
+      this.isDarkMode = event;
+   }
 
-  constructor (protected route: ActivatedRoute) {
-  }
+   constructor ( protected route: ActivatedRoute ) {
+   }
 }
