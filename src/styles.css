@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.darkTheme, .darkTheme *));
+
 :root {
    --primary: rgb(15, 35, 50);
    --primary-dark: rgb(from var(--primary) calc(0.8 * r) calc(0.8 * g) calc(0.8 * b));
@@ -17,16 +19,6 @@
 
 body {
    font-family: var(--font-primary);
-}
-
-.icon-card {
-   padding: 1.25rem;
-   border-radius: 10px;
-   transition: transform 150ms ease-in-out 75ms;
-}
-
-.icon-card:hover {
-   transform: translateY(-0.25rem) scale(1.1);
 }
 
 .darkTheme {
@@ -57,23 +49,10 @@ body {
 }
 
 
-.darkTheme .icon-card {
-   background-color: var(--secondary-dark);
-   color: var(--primary);
-   box-shadow: 0 0 30px var(--accent-dark);
-}
-
-.darkTheme .icon-card:hover > ng-icon {
-   color: var(--accent-dark);
-}
-
 .darkTheme .nav-menu {
    box-shadow: var(--accent) -5px 5px 10px;
 }
 
-.darkTheme .form-field {
-   border-bottom: 1px solid var(--accent-light);
-}
 
 .lightTheme {
    color: var(--primary);
@@ -102,21 +81,8 @@ body {
    text-shadow: var(--primary-light) 0 3px 10px;
 }
 
-.lightTheme .icon-card {
-   background-color: var(--primary);
-   color: var(--secondary);
-   box-shadow: 0 0 30px var(--primary-dark);
-}
-
-.lightTheme .icon-card:hover > ng-icon {
-   color: var(--accent);
-}
-
 .lightTheme .nav-menu {
    box-shadow: var(--primary-light) -5px 5px 10px;
 }
 
-.lightTheme .form-field {
-   border-bottom: 1px solid var(--primary);
-}
 

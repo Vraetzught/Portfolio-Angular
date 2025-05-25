@@ -30,7 +30,9 @@
    <h2 class="text-4xl font-bold self-end">My skills</h2>
    <div class="flex flex-wrap justify-center gap-5 lg:gap-10">
       <div *ngFor="let skill of skills"
-           class="flex flex-col items-center justify-between w-44 h-50 icon-card cursor-pointer">
+           class="flex flex-col items-center justify-between w-44 h-50 bg-(--primary) dark:bg-(--secondary-dark) text-(--secondary) cursor-pointer
+         dark:text-(--primary) shadow-2xl shadow-(color:--primary-dark) dark:shadow-(color:--accent) rounded-xl p-5
+         hover:text-(--accent-dark) transition duration-150 ease-in-out delay-75 hover:-translate-y-1 hover:scale-110">
          <ng-icon [name]="skill.icon" class="text-8xl"></ng-icon>
          <h3 class="text-2xl font-bold">{{ skill.name }}</h3>
       </div>

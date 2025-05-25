@@ -18,6 +18,11 @@ import emailjs from '@emailjs/browser';
    providers: [ provideIcons( { faSolidEnvelope, faSolidSpinner, faBrandGithub, faBrandLinkedinIn } ) ],
 } )
 export class ContactPageComponent implements OnInit {
+   socialIcons = [
+      { name: 'github', url: 'https://github.com/Vraetzught', icon: 'faBrandGithub' },
+      { name: 'linkedin', url: 'https://be.linkedin.com/in/klaas-brems', icon: 'faBrandLinkedinIn' }
+   ]
+
    contactForm!: FormGroup;
    isSubmitting = false;
    submitSuccess = false;
