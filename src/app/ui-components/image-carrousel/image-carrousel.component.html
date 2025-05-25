@@ -1,9 +1,10 @@
 <div class="w-sm lg:w-xl relative">
    <!-- Image container with transition -->
    <div class="relative overflow-hidden rounded-lg w-full h-80 lg:h-[32rem] bg-(--primary)">
-      <img [src]="images[currentImageIndex].path"
+      <img [ngSrc]="images[currentImageIndex].path"
            [alt]="images[currentImageIndex].alt"
-           class="w-full h-full transition-opacity duration-300 ease-in-out object-contain">
+           class="w-full h-full object-contain"
+           fill>
       <!-- Caption area -->
       <div class="absolute bottom-0 w-full bg-(--primary) text-(--accent-light) p-3">
          {{ images[currentImageIndex].alt }}
@@ -17,7 +18,7 @@
    </button>
    <button class="absolute right-2 top-1/2 -translate-y-1/2 px-1 py-1 rounded-full flex items-center justify-center"
            (click)="nextImage()">
-      <ng-icon name="faSolidChevronRight" class="text-2xl" ></ng-icon>
+      <ng-icon name="faSolidChevronRight" class="text-2xl"></ng-icon>
    </button>
 
    <!-- Indicators -->

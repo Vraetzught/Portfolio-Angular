@@ -1,54 +1,57 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { faSolidChevronLeft, faSolidChevronRight } from '@ng-icons/font-awesome/solid';
 
-@Component({
-  selector: 'app-image-carrousel',
+@Component( {
+   selector: 'app-image-carrousel',
    imports: [
       NgIcon,
-      CommonModule
+      CommonModule,
+      NgOptimizedImage,
    ],
-  templateUrl: './image-carrousel.component.html',
-  styleUrl: './image-carrousel.component.css',
-   providers: [provideIcons({faSolidChevronRight, faSolidChevronLeft})]
-})
-export class ImageCarrouselComponent {
+   templateUrl: './image-carrousel.component.html',
+   styleUrl: './image-carrousel.component.css',
+   providers: [ provideIcons( { faSolidChevronRight, faSolidChevronLeft } ) ],
+
+} )
+
+export class ImageCarrouselComponent implements OnInit, OnDestroy {
    @Input() images: { path: string, alt: string }[] = [];
 
    currentImageIndex = 0;
    private carouselInterval: any;
 
-   ngOnInit() {
+   ngOnInit () {
       this.startCarousel();
    }
 
-   ngOnDestroy() {
+   ngOnDestroy () {
       this.stopCarousel();
    }
 
-   startCarousel() {
-      this.carouselInterval = setInterval(() => {
+   startCarousel () {
+      this.carouselInterval = setInterval( () => {
          this.nextImage();
-      }, 10000);
+      }, 10000 );
    }
 
-   stopCarousel() {
-      if (this.carouselInterval) {
-         clearInterval(this.carouselInterval);
+   stopCarousel () {
+      if ( this.carouselInterval ) {
+         clearInterval( this.carouselInterval );
       }
    }
 
-   nextImage() {
+   nextImage () {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
 
    }
 
-   prevImage() {
+   prevImage () {
       this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
    }
 
-   setCurrentImage(index: number) {
+   setCurrentImage ( index: number ) {
       this.currentImageIndex = index;
       this.stopCarousel();
       this.startCarousel();
