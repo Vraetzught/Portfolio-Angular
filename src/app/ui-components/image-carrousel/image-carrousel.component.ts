@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { faSolidChevronLeft, faSolidChevronRight } from '@ng-icons/font-awesome/solid';
+import { faSolidChevronLeft, faSolidChevronRight, faSolidXmark } from '@ng-icons/font-awesome/solid';
 
 @Component( {
    selector: 'app-image-carrousel',
@@ -12,7 +12,7 @@ import { faSolidChevronLeft, faSolidChevronRight } from '@ng-icons/font-awesome/
    ],
    templateUrl: './image-carrousel.component.html',
    styleUrl: './image-carrousel.component.css',
-   providers: [ provideIcons( { faSolidChevronRight, faSolidChevronLeft } ) ],
+   providers: [ provideIcons( { faSolidChevronRight, faSolidChevronLeft, faSolidXmark } ) ],
 
 } )
 
@@ -21,6 +21,9 @@ export class ImageCarrouselComponent implements OnInit, OnDestroy {
 
    currentImageIndex = 0;
    private carouselInterval: any;
+
+   isModalOpen = false;
+   modalImageIndex = 0;
 
    ngOnInit () {
       this.startCarousel();
@@ -55,5 +58,26 @@ export class ImageCarrouselComponent implements OnInit, OnDestroy {
       this.currentImageIndex = index;
       this.stopCarousel();
       this.startCarousel();
+   }
+
+   openModal ( index: number ) {
+      this.isModalOpen = true;
+      this.modalImageIndex = index;
+      this.stopCarousel();
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+   }
+
+   closeModal () {
+      this.isModalOpen = false;
+      document.body.style.overflow = '';
+      this.startCarousel();
+   }
+
+   modalNextImage () {
+      this.modalImageIndex = (this.modalImageIndex + 1) % this.images.length;
+   }
+
+   modalPrevImage () {
+      this.modalImageIndex = (this.modalImageIndex - 1 + this.images.length) % this.images.length;
    }
 }

@@ -1,17 +1,15 @@
 <div class="w-sm lg:w-xl relative">
-   <!-- Image container with transition -->
    <div class="relative overflow-hidden rounded-lg w-full h-80 lg:h-[32rem] bg-(--primary)">
       <img [ngSrc]="images[currentImageIndex].path"
            [alt]="images[currentImageIndex].alt"
            class="w-full h-full object-contain"
+           (click)="openModal(currentImageIndex)"
            fill>
-      <!-- Caption area -->
       <div class="absolute bottom-0 w-full bg-(--primary) text-(--accent-light) p-3">
          {{ images[currentImageIndex].alt }}
       </div>
    </div>
 
-   <!-- Navigation buttons -->
    <button class="absolute left-2 top-1/2 -translate-y-1/2 px-1 py-1 rounded-full flex items-center justify-center"
            (click)="prevImage()">
       <ng-icon name="faSolidChevronLeft" class="text-2xl"></ng-icon>
@@ -21,7 +19,6 @@
       <ng-icon name="faSolidChevronRight" class="text-2xl"></ng-icon>
    </button>
 
-   <!-- Indicators -->
    <div class="flex justify-center mt-3">
       <div *ngFor="let image of images; let i = index"
            [class.bg-accent]="i === currentImageIndex"
@@ -31,3 +28,28 @@
       </div>
    </div>
 </div>
+
+<div *ngIf="isModalOpen"
+     class="absolute top-0 left-0 z-50 flex items-center justify-center h-dvh w-dvw p-10 bg-gray-900/90">
+   <div class="relative w-full h-full">
+      <img [ngSrc]="images[modalImageIndex].path"
+           [alt]="images[modalImageIndex].alt"
+           class="object-contain"
+           fill>
+   </div>
+
+   <button class="absolute top-5 right-5 text-3xl z-20 flex items-center p-1" (click)="closeModal()">
+      <ng-icon name="faSolidXmark"></ng-icon>
+   </button>
+   <button
+      class="absolute left-2 top-1/2 -translate-y-1/2 px-1 py-1 rounded-full text-3xl flex items-center justify-center"
+      (click)="modalPrevImage()">
+      <ng-icon name="faSolidChevronLeft"></ng-icon>
+   </button>
+   <button
+      class="absolute right-2 top-1/2 -translate-y-1/2 px-1 py-1 rounded-full text-3xl flex items-center justify-center"
+      (click)="modalNextImage()">
+      <ng-icon name="faSolidChevronRight"></ng-icon>
+   </button>
+</div>
+
