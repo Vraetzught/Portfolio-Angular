@@ -1,4 +1,4 @@
-import { ImageInfo } from './ImageInfo';
+import { ImageInfo } from './imageInfo';
 
 interface StackItem {
    name: string;
@@ -10,4 +10,5 @@ export interface ProjectInfo {
    images: ImageInfo[]
    description: string;
    stack: StackItem[];
+   link?: string;
 }
