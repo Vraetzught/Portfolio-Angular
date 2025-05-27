@@ -1,6 +1,161 @@
-<main class="container flex flex-col items-center mx-auto py-10 gap-5">
+<h1 class="text-5xl place-self-start">Mijn school- en werkervaring</h1>
+<div class="flex flex-col lg:flex-row gap-5 lg:gap-20 w-full my-5">
+   <div class="flex flex-col w-full lg:w-3/10 gap-3">
+      <div class="px-2 py-1"
+           [ngClass]="openSkillSection === 'Languages' ? 'rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              [ngClass]="openSkillSection === 'Languages' ? 'border-b-2 mb-2 border-b-(--accent)' : 'border-none'"
+              (click)="toggleOpenSection('Languages', 'openSkillSection')">
+            <h2 class="text-3xl">Talen</h2>
+            <ng-icon [name]="openSkillSection === 'Languages' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-col mx-5" *ngIf="openSkillSection === 'Languages'">
+            <div *ngFor="let language of languages"
+                 class="flex flex-row justify-between items-center">
+               <p class="text-lg">{{ language.name }} ({{ language.proficiency }})</p>
+               <div class="h-5 w-4/10 border-2 rounded-full border-(--accent) ring-2 ring-(--primary)">
+                  <div class="h-full bg-(--accent) rounded-l-full" [style.width]="language.score + '%'"></div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-  <p>experience-page works!</p>
+      <div class="px-2 py-1"
+           [ngClass]="openSkillSection === 'ProgrammingLanguages' ? 'rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              [ngClass]="openSkillSection === 'ProgrammingLanguages' ? 'border-b-2 mb-2 border-b-(--accent)' : 'border-none'"
+              (click)="toggleOpenSection('ProgrammingLanguages', 'openSkillSection')">
+            <h2 class="text-3xl">Programming Languages</h2>
+            <ng-icon
+               [name]="openSkillSection === 'ProgrammingLanguages' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-auto justify-around p-5" *ngIf="openSkillSection === 'ProgrammingLanguages'">
+            <ng-icon *ngFor="let programmingLanguage of programmingLanguages"
+                     [name]="programmingLanguage.iconName" class="text-4xl">
+            </ng-icon>
+         </div>
+      </div>
+
+      <div class="px-2 py-1"
+           [ngClass]="openSkillSection === 'Frameworks' ? 'rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              (click)="toggleOpenSection('Frameworks', 'openSkillSection')">
+            <h2 class="text-3xl">Frameworks</h2>
+            <ng-icon [name]="openSkillSection === 'Frameworks' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-col px-3" *ngIf="openSkillSection === 'Frameworks'">
+            <div *ngFor="let framework of frameworks">
+               <div class="flex flex-row justify-between items-center"
+                    [ngClass]="openSkillSubSection === framework.name ? 'border-b-2 border-b-(--accent)' : 'border-none'"
+                    (click)="toggleOpenSection(framework.name, 'openSkillSubSection')">
+                  <h3 class="text-xl">{{ framework.name }}</h3>
+                  <ng-icon
+                     [name]="openSkillSubSection === framework.name ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+               </div>
+               <ul *ngIf="openSkillSubSection === framework.name" class="p-3">
+                  <li *ngFor="let sub of framework.sub" class="text-lg flex flex-row items-center justify-between">
+                     {{ sub.name }}
+                     <ng-icon *ngIf="sub.iconName" [name]="sub.iconName" class="text-2xl"></ng-icon>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+
+      <div class="px-2 py-1"
+           [ngClass]="openSkillSection === 'Tools' ? 'rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              [ngClass]="openSkillSection === 'Tools' ? 'border-b-2 mb-2 border-b-(--accent)' : 'border-none'"
+              (click)="toggleOpenSection('Tools', 'openSkillSection')">
+            <h2 class="text-3xl">Tools</h2>
+            <ng-icon [name]="openSkillSection === 'Tools' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-auto justify-around p-5" *ngIf="openSkillSection === 'Tools'">
+            <ng-icon *ngFor="let tool of tools"
+                     [name]="tool.iconName" class="text-4xl">
+            </ng-icon>
+         </div>
+      </div>
 
 
-</main>
+      <div class="px-2 py-1"
+           [ngClass]="openSkillSection === 'Editors' ? ' rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              [ngClass]="openSkillSection === 'Editors' ? 'border-b-2 mb-2 border-b-(--accent)' : 'border-none'"
+              (click)="toggleOpenSection('Editors', 'openSkillSection')">
+            <h2 class="text-3xl">Favoriete Editors</h2>
+            <ng-icon [name]="openSkillSection === 'Editors' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-auto justify-around p-5" *ngIf="openSkillSection === 'Editors'">
+            <ng-icon *ngFor="let editor of editors"
+                     [name]="editor.iconName" class="text-4xl">
+            </ng-icon>
+         </div>
+      </div>
+
+   </div>
+   <div class="flex flex-col w-full lg:w-3/5 gap-3">
+      <div class="px-2 py-1"
+           [ngClass]="openExperienceSection === 'School' ? 'rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              [ngClass]="openExperienceSection === 'School' ? 'border-b-2 mb-2 border-b-(--accent)' : 'border-none'"
+              (click)="toggleOpenSection('School', 'openExperienceSection')">
+            <h2 class="text-3xl">Scholing</h2>
+            <ng-icon [name]="openExperienceSection === 'School' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-col gap-5 mt-5 px-3" *ngIf="openExperienceSection === 'School'">
+            <div *ngFor="let school of schooling" class="flex flex-col">
+               <h3 class="flex flex-col lg:flex-row lg:items-baseline lg:gap-2">
+                  <span class="text-2xl font-semibold">{{ school.name }}</span>
+                  <span
+                     class="text-sm lg:text-md text-(--primary) dark:text-(--secondary)">- {{ school.institution }}</span>
+               </h3>
+               <p class="text-lg pl-3">{{ school.info }}</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="px-2 py-1"
+           [ngClass]="openExperienceSection === 'Work' ? 'rounded-xl bg-(--secondary-dark) dark:bg-(--primary-light)' : 'bg-none'">
+         <div class="flex flex-row justify-between items-center cursor-pointer"
+              (click)="toggleOpenSection('Work', 'openExperienceSection')">
+            <h2 class="text-3xl">Werkervaring</h2>
+            <ng-icon [name]="openExperienceSection === 'Work' ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+         </div>
+         <div class="flex flex-col my-5" *ngIf="openExperienceSection === 'Work'">
+            <div *ngFor="let job of jobs" class="flex flex-col">
+               <div class="flex flex-col lg:flex-row items-center gap-2 py-2"
+                    [ngClass]="openWorkSection === job.name ? 'border-b-2 mb-2 border-b-(--accent)' : 'border-none'">
+                  <div
+                     class="h-full flex place-self-end lg:place-self-auto font-bold border-2 rounded-xl border-(--accent) bg-(--primary) text-(--secondary) dark:bg-(--secondary) dark:text-(--primary) px-2 py-1">
+                     {{ job.start }}-{{ job.end }}
+                  </div>
+                  <div class="flex flex-row w-full justify-between items-center gap-2"
+                       (click)="toggleOpenSection(job.name, 'openWorkSection')">
+                     <h3 class="text-xl lg:text-2xl font-semibold">{{ job.name }}</h3>
+                     <span
+                        class="text-md text-(--primary) dark:text-(--secondary) hidden lg:visible">{{ job.company }}</span>
+                     <ng-icon
+                        [name]="openWorkSection === job.name ? 'faSolidChevronDown' : 'faSolidChevronUp'"></ng-icon>
+                  </div>
+
+               </div>
+               <div class="pl-3 pb-3 flex flex-col gap-3" *ngIf="openWorkSection === job.name">
+                  <p class="text-lg">{{ job.description }}</p>
+                  <div class="text-sm">
+                     <p>Belangrijkste vaardigheden:</p>
+                     <ul class="list-disc pl-5">
+                        <li *ngFor="let skill of job.skills">{{ skill }}</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+   </div>
+
+</div>
+
+
