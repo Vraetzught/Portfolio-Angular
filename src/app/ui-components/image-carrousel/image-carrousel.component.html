@@ -6,7 +6,7 @@
            (click)="openModal(currentImageIndex)"
            fill>
       <div class="absolute bottom-0 w-full bg-(--primary) text-(--accent-light) p-3">
-         {{ images[currentImageIndex].alt }}
+         {{ images[currentImageIndex].info ?? images[currentImageIndex].alt }}
       </div>
    </div>
 

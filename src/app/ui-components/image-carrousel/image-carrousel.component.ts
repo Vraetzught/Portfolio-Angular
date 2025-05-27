@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { faSolidChevronLeft, faSolidChevronRight, faSolidXmark } from '@ng-icons/font-awesome/solid';
+import { ImageInfo } from '../../../interfaces';
 
 @Component( {
    selector: 'app-image-carrousel',
@@ -17,7 +18,7 @@ import { faSolidChevronLeft, faSolidChevronRight, faSolidXmark } from '@ng-icons
 } )
 
 export class ImageCarrouselComponent implements OnInit, OnDestroy {
-   @Input() images: { path: string, alt: string }[] = [];
+   @Input() images: ImageInfo[] = [];
 
    currentImageIndex = 0;
    private carouselInterval: any;
