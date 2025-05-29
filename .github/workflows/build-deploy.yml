@@ -25,7 +25,7 @@ jobs:
            run: npm run build -- --configuration production
 
          - name: Upload via FTP to Combell (backup)
-           uses: SamKirkland/FTP-Deploy-Action@v4
+           uses: SamKirkland/FTP-Deploy-Action@v4.3.0
            with:
               server: ${{ secrets.FTP_SERVER }}
               username: ${{ secrets.FTP_USERNAME }}
@@ -34,7 +34,7 @@ jobs:
               server-dir: /portfolio-angular/
 
          - name: Upload via FTP to Combell
-           uses: SamKirkland/FTP-Deploy-Action@v4
+           uses: SamKirkland/FTP-Deploy-Action@v4.3.0
            with:
               server: ${{ secrets.FTP_SERVER }}
               username: ${{ secrets.FTP_USERNAME }}
