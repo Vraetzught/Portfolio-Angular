@@ -30,7 +30,7 @@ jobs:
               server: ${{ secrets.FTP_SERVER }}
               username: ${{ secrets.FTP_USERNAME }}
               password: ${{ secrets.FTP_PASSWORD }}
-              local-dir: dist/portfolio-angular/browser
+              local-dir: dist/portfolio-angular/browser/
               server-dir: /portfolio-angular/
 
          - name: Upload via FTP to Combell
